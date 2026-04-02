@@ -1,396 +1,140 @@
-{
-  "name": "My workflow 6",
-  "nodes": [
-    {
-      "parameters": {
-        "pollTimes": {
-          "item": [
-            {
-              "mode": "everyMinute"
-            }
-          ]
-        },
-        "documentId": {
-          "__rl": true,
-          "value": "1nrkY9Jt3_lAv0HreW7rU4wKDoiaand_FAA7M6drGUjE",
-          "mode": "list",
-          "cachedResultName": "Job Candidate Application Form (Responses)",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1nrkY9Jt3_lAv0HreW7rU4wKDoiaand_FAA7M6drGUjE/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": 1566387402,
-          "mode": "list",
-          "cachedResultName": "Form Responses 1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1nrkY9Jt3_lAv0HreW7rU4wKDoiaand_FAA7M6drGUjE/edit#gid=1566387402"
-        },
-        "event": "rowAdded",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheetsTrigger",
-      "typeVersion": 1,
-      "position": [
-        0,
-        0
-      ],
-      "id": "8bf0b5a5-bbd4-49ad-ba66-a2fbbe923a54",
-      "name": "Google Sheets Trigger",
-      "credentials": {
-        "googleSheetsTriggerOAuth2Api": {
-          "id": "E6o79Jw4LPPookdg",
-          "name": "Google Sheets Trigger account 3"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 3
-          },
-          "conditions": [
-            {
-              "id": "6a0e1c0d-3d5d-41e6-9c99-b37574272fb6",
-              "leftValue": "={{ $json['YEARS OF EXPERIENCE'] }}",
-              "rightValue": 3,
-              "operator": {
-                "type": "number",
-                "operation": "gt"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
-      "position": [
-        208,
-        0
-      ],
-      "id": "31328baf-08bf-46f0-b731-5bef51106631",
-      "name": "If"
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "documentId": {
-          "__rl": true,
-          "value": "1nrkY9Jt3_lAv0HreW7rU4wKDoiaand_FAA7M6drGUjE",
-          "mode": "list",
-          "cachedResultName": "Job Candidate Application Form (Responses)",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1nrkY9Jt3_lAv0HreW7rU4wKDoiaand_FAA7M6drGUjE/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": 1566387402,
-          "mode": "list",
-          "cachedResultName": "Form Responses 1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1nrkY9Jt3_lAv0HreW7rU4wKDoiaand_FAA7M6drGUjE/edit#gid=1566387402"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "STATUS": "  ",
-            "Timestamp": "={{ $json.Timestamp }}",
-            "Email Address": "={{ $json['Email Address'] }}",
-            "FULL NAME ": "={{ $json['FULL NAME '] }}",
-            "YEARS OF EXPERIENCE": "={{ $json['YEARS OF EXPERIENCE'] }}",
-            "SKILLS": "={{ $json.SKILLS }}",
-            "row_number": 0
-          },
-          "matchingColumns": [
-            "Timestamp"
-          ],
-          "schema": [
-            {
-              "id": "Timestamp",
-              "displayName": "Timestamp",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "Email Address",
-              "displayName": "Email Address",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "FULL NAME ",
-              "displayName": "FULL NAME ",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "YEARS OF EXPERIENCE",
-              "displayName": "YEARS OF EXPERIENCE",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "SKILLS",
-              "displayName": "SKILLS",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "STATUS",
-              "displayName": "STATUS",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "row_number",
-              "displayName": "row_number",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "number",
-              "canBeUsedToMatch": true,
-              "readOnly": true,
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        416,
-        -96
-      ],
-      "id": "1941e8fb-8e85-45a3-bf6f-e9939d3835ad",
-      "name": "Update row in sheet",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "P27PyJEt7D0vhelB",
-          "name": "Google Sheets OAuth2 API"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "documentId": {
-          "__rl": true,
-          "value": "1nrkY9Jt3_lAv0HreW7rU4wKDoiaand_FAA7M6drGUjE",
-          "mode": "list",
-          "cachedResultName": "Job Candidate Application Form (Responses)",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1nrkY9Jt3_lAv0HreW7rU4wKDoiaand_FAA7M6drGUjE/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": 1566387402,
-          "mode": "list",
-          "cachedResultName": "Form Responses 1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1nrkY9Jt3_lAv0HreW7rU4wKDoiaand_FAA7M6drGUjE/edit#gid=1566387402"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "Timestamp": "={{ $json.Timestamp }}",
-            "Email Address": "={{ $json['Email Address'] }}",
-            "FULL NAME ": "={{ $json['FULL NAME '] }}",
-            "YEARS OF EXPERIENCE": "={{ $json['YEARS OF EXPERIENCE'] }}",
-            "SKILLS": "={{ $json.SKILLS }}"
-          },
-          "matchingColumns": [
-            "Timestamp"
-          ],
-          "schema": [
-            {
-              "id": "Timestamp",
-              "displayName": "Timestamp",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "Email Address",
-              "displayName": "Email Address",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "FULL NAME ",
-              "displayName": "FULL NAME ",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "YEARS OF EXPERIENCE",
-              "displayName": "YEARS OF EXPERIENCE",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "SKILLS",
-              "displayName": "SKILLS",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "STATUS",
-              "displayName": "STATUS",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "row_number",
-              "displayName": "row_number",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "number",
-              "canBeUsedToMatch": true,
-              "readOnly": true,
-              "removed": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        416,
-        96
-      ],
-      "id": "85277b94-f425-4eb7-8240-1de78c0e3011",
-      "name": "Update row in sheet1",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "P27PyJEt7D0vhelB",
-          "name": "Google Sheets OAuth2 API"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "fromEmail": "ishasoni903@gmail.com",
-        "toEmail": "isha1530.mba25hr@chitkara.edu.in",
-        "subject": "=Candidate Processed",
-        "emailFormat": "text",
-        "text": "=Candidate Details:\n\nName:\nEmail: {{$json[\"Email Address\"]}}\nExperience: {{$json[\"YEARS OF EXPERIENCE\"]}} years\nSkills: {{$json[\"SKILLS\"]}}\nStatus: {{$json[\"STATUS\"]}}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.emailSend",
-      "typeVersion": 2.1,
-      "position": [
-        624,
-        -96
-      ],
-      "id": "d0a5fa28-86e0-4dd7-a09e-d1453cc8cddf",
-      "name": "Send an Email",
-      "webhookId": "4fb667db-a379-4efa-ba3e-c3bd77d89ef6",
-      "credentials": {
-        "smtp": {
-          "id": "2saWz1z1mc9lDKh2",
-          "name": "SMTP account 3"
-        }
-      }
-    }
-  ],
-  "pinData": {},
-  "connections": {
-    "Google Sheets Trigger": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "Update row in sheet",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Update row in sheet1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Update row in sheet": {
-      "main": [
-        [
-          {
-            "node": "Send an Email",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  },
-  "active": false,
-  "settings": {
-    "executionOrder": "v1",
-    "binaryMode": "separate"
-  },
-  "versionId": "f20a8c0d-9b13-424e-82ba-a4c3d36c079d",
-  "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "89e2417d6c9d1c2f51ea17d4a79fe2835bd9514dd560186944231bbcf434142e"
-  },
-  "id": "fay7sd4PdIN1ZqAL",
-  "tags": []
-}
+# 📊 AI-Based Candidate Screening & HR Automation (n8n)
+
+## 🚀 Overview
+This project is an automated HR recruitment workflow built using n8n. It streamlines candidate screening by integrating Google Sheets, conditional logic, automated emails, and a visual dashboard.
+
+The system automatically:
+- Captures candidate data
+- Filters candidates (Selected / Not Selected)
+- Sends automated email responses
+- Updates records in Google Sheets
+- Displays insights in a dashboard
+
+---
+
+## 🧠 Workflow Architecture
+
+Google Sheets Trigger → IF Node  
+        │  
+        ├── Selected → Update Sheet → Send Email  
+        │  
+        └── Not Selected → Update Sheet  
+
+---
+
+## 🛠️ Technologies Used
+
+- n8n (Workflow Automation)  
+- Google Sheets (Data Storage)  
+- SMTP / Gmail API (Email Automation)  
+- HTML, CSS, JavaScript (Dashboard)  
+- Chart.js (Data Visualization)  
+- GitHub (Version Control)  
+
+---
+
+## 📸 Screenshots
+
+### n8n Workflow
+![Workflow Screenshot](./n8n%20(2).png)
+
+### Dashboard
+![Dashboard Screenshot](./Dahboard.png)
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone Repository
+git clone https://github.com/your-username/your-repo-name.git  
+cd your-repo-name  
+
+---
+
+### 2. Setup n8n Workflow
+- Open n8n  
+- Import the workflow JSON file  
+- Connect your credentials:
+  - Google Sheets  
+  - Email (SMTP/Gmail)  
+
+---
+
+### 3. Configure Google Sheet
+Ensure your sheet has columns:
+- Full Name  
+- Email  
+- Experience  
+- Status  
+
+---
+
+### 4. Run Workflow
+- Click "Execute Workflow" in n8n  
+- Add a new row in Google Sheets  
+- Workflow will run automatically  
+
+---
+
+## 📊 Dashboard Features
+
+- Total Candidates Count  
+- Selected vs Not Selected  
+- Average Experience  
+- Candidate Table  
+- Pie Chart Visualization  
+
+---
+
+## 💼 Use Case in HR
+
+This system helps HR teams to:
+- Automate candidate screening  
+- Reduce manual work  
+- Send instant responses  
+- Track hiring data visually  
+- Improve decision-making  
+
+---
+
+## 🌟 Future Enhancements
+
+- AI-based resume screening  
+- Predictive hiring analytics  
+- Chatbot for candidate interaction  
+- Integration with ATS systems  
+- Live dashboard with APIs  
+
+---
+
+## 🚀 Benefits
+
+- Faster hiring process  
+- Reduced human bias  
+- Scalable recruitment  
+- Data-driven decisions  
+- Better candidate experience  
+
+---
+
+## 📁 Project Structure
+
+├── workflow/           # n8n workflow JSON  
+├── dashboard/          # Frontend dashboard code  
+├── assets/             # Screenshots  
+└── README.md  
+
+---
+
+## 👩‍💻 Author
+
+Isha Soni  
+
+---
+
+## ⭐ Support
+
+If you like this project:
+- Star the repo  
+- Fork it  
+- Share it  
